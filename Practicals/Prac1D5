@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Prac1D5
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            int a = int.Parse(TextBox1.Text);
+            int b = a, tem = 0;
+            int sum = 0, rev = 0;
+            while (b != 0)
+            {
+                tem = b % 10;
+                rev = rev * 10 + tem;
+                b = b / 10;
+                sum = sum + tem;
+            }
+            Label3.Text = rev.ToString();
+            Label5.Text = sum.ToString();
+        }
+    }
+}
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Prac1D5.WebForm1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:Label ID="Label6" runat="server" Text="Enter a no := "></asp:Label>
+        <asp:TextBox ID="TextBox1" runat="server" style="margin-left: 12px"></asp:TextBox>
+    
+    </div>
+    <br />
+    <div>
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+        <br />
+        <br />
+    </div>
+    <asp:Label ID="Label2" runat="server" Text="Reverse No := "></asp:Label>
+    &nbsp;&nbsp;&nbsp;
+    <asp:Label ID="Label3" runat="server" Text="0"></asp:Label>
+    &nbsp;&nbsp;
+    <br />
+    <asp:Label ID="Label4" runat="server" Text="Sum of No :="></asp:Label>
+    &nbsp;&nbsp;&nbsp;
+    <asp:Label ID="Label5" runat="server" Text="0"></asp:Label>
+    &nbsp;&nbsp;
+    </form>
+</body>
+</html>
