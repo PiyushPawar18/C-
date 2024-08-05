@@ -1,0 +1,121 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+
+namespace Prac2A2
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        float ans;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                // Ensure all RadioButtons are unchecked on initial load
+                RadioButton1.Checked = false;
+                RadioButton2.Checked = false;
+                RadioButton3.Checked = false;
+                RadioButton4.Checked = false;
+                RadioButton5.Checked = false;
+                RadioButton6.Checked = false;
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            float rs;
+            if(float.TryParse(TextBox1.Text, out rs))
+            {
+                float ans = 0.0f;
+
+                if (RadioButton1.Checked)
+                {
+                    ans = rs / 83.77f;
+                    Label2.Text = ans + " Dollar";
+                }
+                else if (RadioButton2.Checked)
+                {
+                    ans = rs / 0.57f;
+                    Label2.Text = ans + " Yen";
+                }
+                else if (RadioButton3.Checked)
+                {
+                    ans = rs / 11.70f;
+                    Label2.Text = ans + " Yuan";
+                }
+                else if (RadioButton4.Checked)
+                {
+                    ans = rs / 0.72f;
+                    Label2.Text = ans + " Taka";
+                }
+                else if (RadioButton5.Checked)
+                {
+                    ans = rs / 0.30f;
+                    Label2.Text = ans + " PKR";
+                }
+                else if (RadioButton6.Checked)
+                {
+                    ans = rs / 0.99f;
+                    Label2.Text = ans + " RUB";
+                }
+                else
+                {
+                    Label2.Text = "Please select a currency.";
+                }
+            }
+            else
+            {
+                Label2.Text = "Please enter a valid number for INR.";
+            }
+        }
+    }
+
+}
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Prac2A2.WebForm1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Enter a Indian Rs := "></asp:Label>
+            <asp:TextBox ID="TextBox1" runat="server" style="margin-left: 40px" 
+                Height="23px"></asp:TextBox>
+            <br />
+            <br />
+        </div>
+        <asp:RadioButton ID="RadioButton1" runat="server" Text="US (dollar)" AutoPostBack="True" GroupName="Currency" />
+        <p>
+            <asp:RadioButton ID="RadioButton2" runat="server" Text="Japanese (yen)" AutoPostBack="True" GroupName="Currency" />
+        </p>
+        <p>
+            <asp:RadioButton ID="RadioButton3" runat="server" Text="China (yuan)" AutoPostBack="True" GroupName="Currency" />
+        </p>
+        <p>
+            <asp:RadioButton ID="RadioButton4" runat="server" Text="Bangladeshi (Taka)" AutoPostBack="True" GroupName="Currency" />
+        </p>
+        <p>
+            <asp:RadioButton ID="RadioButton5" runat="server" Text="Pakistan (Pakistani Rupee [PKR])" AutoPostBack="True" GroupName="Currency" />
+        </p>
+        <p>
+            <asp:RadioButton ID="RadioButton6" runat="server" Text="Russia (Russian Ruble [RUB])" AutoPostBack="True" GroupName="Currency" />
+        </p>
+        <p>
+            <asp:Button ID="Button1" runat="server" Text="Convert" OnClick="Button1_Click" Height="29px" />
+        </p>
+        <p>
+            <asp:Label ID="Label2" runat="server" Text="Ans"></asp:Label>
+        </p>
+    </form>
+</body>
+</html>
