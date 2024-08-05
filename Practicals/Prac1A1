@@ -20,7 +20,7 @@ namespace Prac2A1
             int a = 0;
             int b = 1, c;
             Label2.Text = a + " " + b + " ";
-            for (int i = 2; i <= x; i++)
+            for (int i = 2; i < x; i++)
             {
                 c = a + b;
                 a = b;
