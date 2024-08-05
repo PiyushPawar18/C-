@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Prac2B3
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            int userInput1= int.Parse(TextBox1.Text);
+            int userInput2 = int.Parse(TextBox2.Text);
+            
+            Fun obj1 = new Fun();
+            int nonParaResult = obj1.Add();
+
+            Fun obj2 = new Fun(userInput1, userInput2);
+            int paraResult = obj2.Add();
+
+            TextBox3.Text = "Non-Parameterized Consturctor(5+8) " + nonParaResult;
+            TextBox4.Text = "Parameterized Constructor " + paraResult;
+        }
+
+    }
+
+    public class Fun
+    {
+        private int a,b;
+        public Fun()
+        {
+            a = 5;
+            b = 8;        
+        }
+        public Fun(int a, int b)
+        {
+            this.a = a;
+            this.b = b;
+        }
+        public int Add()
+        {
+            return a + b;
+        }
+    }
+}
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Prac2B3.WebForm1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="Label1" runat="server" Text="Constructor Overloading"></asp:Label>
+    </div>
+    <br />
+    <br />
+    <asp:Label ID="Label2" runat="server" Text="Enter a 1st no := "></asp:Label>
+    <asp:TextBox ID="TextBox1" runat="server" style="margin-left: 0px"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="Label3" runat="server" Text="Enter a 2nd no := "></asp:Label>
+        <asp:TextBox ID="TextBox2" runat="server" style="margin-left: 0px"></asp:TextBox>
+    <br />
+    <br />
+    <br />
+    <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+    <br />
+    <p>
+        <asp:TextBox ID="TextBox3" runat="server" Width="283px"></asp:TextBox>
+        <asp:TextBox ID="TextBox4" runat="server" Width="344px" style="margin-left: 56px"></asp:TextBox>
+    </p>
+   
+    </form>
+</body>
+</html>
