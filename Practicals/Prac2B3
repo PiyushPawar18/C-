@@ -26,7 +26,7 @@ namespace Prac2B3
             int paraResult = obj2.Add();
 
             TextBox3.Text = "Non-Parameterized Consturctor(5+8) " + nonParaResult;
-            TextBox4.Text = "Parameterized Constructor " + paraResult;
+            TextBox4.Text = "Parameterized Constructor " +"("+TextBox1.Text+","+TextBox2.Text +")" + " := "+ paraResult;
         }
 
     }
