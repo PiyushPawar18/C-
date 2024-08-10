@@ -22,7 +22,7 @@ namespace Prac1A1
             int d = int.Parse(TextBox4.Text);
 
            
-            int product = a* b* c*d
+            int product = a* b* c*d ;
             Label2.Text = "product of 4 int no is := " + product;
         }
     }
