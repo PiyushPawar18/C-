@@ -1,0 +1,83 @@
+using System;
+using System.Web.UI;
+
+namespace Prac2A3
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void CalculateRoots(object sender, EventArgs e)
+        {
+            int a = int.Parse(TextBoxA.Text);
+            int b = int.Parse(TextBoxB.Text);
+            int c = int.Parse(TextBoxC.Text);
+
+            double ans = b * b - 4 * a * c;
+            double x1, x2;
+
+            if (ans == 0)
+            {
+                Label2.Text = "Both roots are real and equal. ";
+                x1 = -b / (2.0 * a);
+                x2 = x1;
+                Label1.Text += "Root x1: "+x1+" Root x2: "+x2;
+            }
+            else if (ans > 0)
+            {
+                Label2.Text = "Roots are real and unequal. ";
+                x1 = (-b - Math.Sqrt(ans)) / (2.0 * a);
+                x2 = (-b + Math.Sqrt(ans)) / (2.0 * a);
+                Label1.Text += "Root x1: " + x1 + " Root x2: " + x2;
+            }
+            else
+            {
+                Label2.Text = "Roots are imaginary. No real solution.";
+            }
+        }
+    }
+}
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Prac2A3.WebForm1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Quadratic Equation Solver</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2>Quadratic Equation Solver</h2>
+            <p>
+                Enter the coefficients of the quadratic equation ax^2 + bx + c = 0:</p>
+            <p>
+                <label for="TextBoxA">&nbsp;a:</label>
+                <asp:TextBox ID="TextBoxA" runat="server"></asp:TextBox>
+            </p>
+            <p>
+                <label for="TextBoxB">b:</label>
+                <asp:TextBox ID="TextBoxB" runat="server"></asp:TextBox>
+            </p>
+            <p>
+                <label for="TextBoxC">c:</label>
+                <asp:TextBox ID="TextBoxC" runat="server"></asp:TextBox>
+            </p>
+            <p>
+                <asp:Button ID="CalculateButton" runat="server" Text="Calculate Roots" OnClick="CalculateRoots" />
+            </p>
+            <p>
+                <asp:Label ID="Label2" runat="server" Text="Result"></asp:Label>
+            </p>
+        </div>
+        <p>
+            <asp:Label ID="Label1" runat="server" Text="Ans"></asp:Label>
+        </p>
+    </form>
+</body>
+</html>
