@@ -17,14 +17,27 @@ namespace Prac1D2
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            int x = int.Parse(TextBox1.Text);
-            if (x % 2 == 1 || x == 2)
+           for (int j = 2; j <= num; j++)
             {
-                Label2.Text = x + " is Prime No .";
-            }
-            else
-            {
-                Label2.Text = x + " is Not Prime NO ." ;
+                
+                    if (j == num)
+                    {
+                        if (num % j == 0)
+                        {
+                            Label2.Text = num + " is prime no";
+                        }
+                    }
+                    else 
+                    {
+                        if (num % j== 0)
+                        {
+                            Label2.Text = num + " is not prime no";
+                            break; 
+                        }
+                        
+                    }
+                    
+                
             }
         }
     }
